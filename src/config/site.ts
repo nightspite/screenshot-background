@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "nightspite/screenshot-background",
   url: "https://github.com/nightspite",
-  ogImage: "/og.jpg",
+  ogImage: "https://screenshot-background.vercel.app/og.jpg",
   description:
     "Make your screenshot more beautiful with a background image.",
   links: {
