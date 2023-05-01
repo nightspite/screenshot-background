@@ -1,6 +1,6 @@
 # nightspite/screenshot-background
 
-![Screenshot](./screenshot.png)
+![Screenshot](public/og.jpg)
 
 ## Motivation
 
@@ -25,13 +25,13 @@ yarn build
 
 ## Todo
 
-- [] custom bg image
-- [] bg image position
-- [] bg blur
-- [] bg opacity
-- [] screenshot alignment
+- [ ] custom bg image
+- [ ] bg image position
+- [ ] bg blur
+- [ ] bg opacity
+- [ ] screenshot alignment
 
 ## Credits
 
-UI Library: [shadcn/ui](https://ui.shadcn.com/)
-Gradient & Mesh Generator [hypercolor](https://hypercolor.dev/)
+- UI Library: [shadcn/ui](https://ui.shadcn.com/)
+- Gradient & Mesh Generator [hypercolor](https://hypercolor.dev/)
