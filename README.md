@@ -17,6 +17,7 @@ After using [Cleanshot X](https://cleanshot.com/) for a while, the simple screen
 - [x] padding
 - [x] box shadow
 - [x] aspect ratio
+- [x] proper image scaling
 - [ ] save favorites?
 - [ ] custom bg image
 - [ ] bg image position

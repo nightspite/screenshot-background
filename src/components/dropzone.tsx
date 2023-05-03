@@ -7,7 +7,7 @@ import Balancer from 'react-wrap-balancer';
 import { atom, useAtom } from 'jotai';
 import { aspectAtom, boxShadowAtom, radiusAtom } from '@/components/menu';
 import { cn, getOriginalImageSize, parseAspectRatio } from '@/lib/utils';
-import { BOX_SHADOW_OPTIONS } from '@/lib/const';
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export const dropzoneFileAtom = atom<File | null>(null);
 
@@ -40,6 +40,8 @@ export function Dropzone() {
         setFileImageSize(size);
       });
 
+      const boxShadowStyle = defaultTheme?.boxShadow?.[boxShadow];
+
       return (
         // eslint-disable-next-line @next/next/no-img-element
         <img
@@ -47,13 +49,13 @@ export function Dropzone() {
           alt='screenshot'
           style={{
             borderRadius: radius,
+            boxShadow: boxShadowStyle,
           }}
           className={cn(
             'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all',
             fileImageSize && fileImageSize?.ratio < parseAspectRatio(aspect)
               ? 'h-full'
-              : 'w-full',
-            BOX_SHADOW_OPTIONS[boxShadow]
+              : 'w-full'
           )}
         />
       );

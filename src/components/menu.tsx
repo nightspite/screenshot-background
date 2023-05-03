@@ -16,7 +16,12 @@ import { Button } from '@/components/ui/button';
 import domtoimage from 'dom-to-image';
 import { dropzoneFileAtom } from '@/components/dropzone';
 import copyToClipboard from 'copy-to-clipboard';
-import { cn, cssStringToObj, getOriginalImageSize } from '@/lib/utils';
+import {
+  cn,
+  cssStringToObj,
+  getOriginalImageSize,
+  parseAspectRatio,
+} from '@/lib/utils';
 import { Textarea } from '@/components/ui/textarea';
 import { useEffect, useState } from 'react';
 import colors from 'tailwindcss/colors';
@@ -83,8 +88,6 @@ export function Menu() {
           disabled={!file}
           onClick={async () => {
             const node = document.querySelector('#preview') as HTMLElement;
-            // const parsedAspect = parseAspectRatio(aspect);
-
             if (node) {
               if (file) {
                 const url = window.URL.createObjectURL(file);
@@ -92,34 +95,34 @@ export function Menu() {
 
                 const originalNodeWidth = node.clientWidth;
                 const originalNodeHeight = node.clientHeight;
-                const originalNodeAspectRatio =
+                const originalAspectRatio =
                   originalNodeWidth / originalNodeHeight;
 
                 const nodeCopy = node.cloneNode(true) as HTMLElement;
-                document.body.appendChild(nodeCopy);
 
-                console.log(nodeCopy.clientWidth, nodeCopy.clientHeight);
-                // nodeCopy.style.width = `${size.width + padding * 2}px`;
-                // nodeCopy.style.height = `${size.height + padding * 2}px`;
+                // console.log(size.width, size.height, size.ratio);
+                // console.log(
+                //   originalNodeWidth,
+                //   originalNodeHeight,
+                //   originalAspectRatio
+                // );
 
-                const jpeg = await domtoimage.toJpeg(
+                const png = await domtoimage.toPng(
                   nodeCopy,
-                  size?.width > size?.height
+                  size.ratio >= originalAspectRatio
                     ? {
                         width: size.width + padding * 2,
-                        height:
-                          size.width * originalNodeAspectRatio + padding * 2,
+                        height: size.width / originalAspectRatio + padding * 2,
                       }
                     : {
-                        width: size.height + padding * 2,
-                        height:
-                          size.height * originalNodeAspectRatio + padding * 2,
+                        width: size.height * originalAspectRatio + padding * 2,
+                        height: size.height + padding * 2,
                       }
                 );
-                if (jpeg) {
+                if (png) {
                   const a = document.createElement('a');
-                  a.href = jpeg;
-                  a.download = 'image.jpg';
+                  a.href = png;
+                  a.download = 'image.png';
                   a.click();
                 }
               }
