@@ -3,7 +3,7 @@ export const siteConfig = {
   url: "https://github.com/nightspite",
   ogImage: "https://screenshot-background.vercel.app/og.jpg",
   description:
-    "Make your screenshot more beautiful with a background image.",
+    "Make your screenshots pop with a background image.",
   links: {
     twitter: "https://twitter.com/nightspite3",
     github: "https://github.com/nightspite",
