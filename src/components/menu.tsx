@@ -216,28 +216,87 @@ export function Menu() {
           </TabsList>
           <TabsContent value='gradient'>
             <Card>
-              <CardHeader>
-                <CardTitle>Linear Gradient</CardTitle>
+              <CardHeader className='pb-2'>
+                <CardTitle>Gradient</CardTitle>
               </CardHeader>
               <CardContent className='space-y-2'>
-                <div className='grid grid-cols-2 xs:grid-cols-3 gap-4'>
-                  {DEFAULT_BG_OPTIONS.gradient?.map((bgStyle, idx) => (
-                    <BackgroundPreview
-                      style={cssStringToObj(
-                        bgStyle?.replace(/\d*deg/g, `${gradientDegree}deg`)
-                      )}
-                      key={idx}
-                      onClick={() =>
-                        setBg({
-                          style: bgStyle?.replace(
-                            /\d*deg/g,
-                            `${gradientDegree}deg`
-                          ),
-                          type: 'gradient',
-                        })
-                      }
-                    />
-                  ))}
+                <div>
+                  <p className='text-sm text-muted-foreground'>
+                    Linear gradient
+                  </p>
+                  <div className='grid grid-cols-2 xs:grid-cols-3 gap-4'>
+                    {DEFAULT_BG_OPTIONS.gradient
+                      ?.slice(0, 6)
+                      ?.map((bgStyle, idx) => (
+                        <BackgroundPreview
+                          style={cssStringToObj(
+                            bgStyle?.replace(/\d*deg/g, `${gradientDegree}deg`)
+                          )}
+                          key={idx}
+                          onClick={() =>
+                            setBg({
+                              style: bgStyle?.replace(
+                                /\d*deg/g,
+                                `${gradientDegree}deg`
+                              ),
+                              type: 'gradient',
+                            })
+                          }
+                        />
+                      ))}
+                  </div>
+                </div>
+                <div>
+                  <p className='text-sm text-muted-foreground'>
+                    Radial gradient
+                  </p>
+                  <div className='grid grid-cols-2 xs:grid-cols-3 gap-4'>
+                    {DEFAULT_BG_OPTIONS.gradient
+                      ?.slice(6, 9)
+                      ?.map((bgStyle, idx) => (
+                        <BackgroundPreview
+                          style={cssStringToObj(
+                            bgStyle?.replace(/\d*deg/g, `${gradientDegree}deg`)
+                          )}
+                          key={idx}
+                          onClick={() =>
+                            setBg({
+                              style: bgStyle?.replace(
+                                /\d*deg/g,
+                                `${gradientDegree}deg`
+                              ),
+                              type: 'gradient',
+                            })
+                          }
+                        />
+                      ))}
+                  </div>
+                </div>
+                <div>
+                  <p className='text-sm text-muted-foreground'>
+                    Conic gradient
+                  </p>
+                  <div className='grid grid-cols-2 xs:grid-cols-3 gap-4'>
+                    {DEFAULT_BG_OPTIONS.gradient
+                      ?.slice(9, 12)
+                      ?.map((bgStyle, idx) => (
+                        <BackgroundPreview
+                          style={cssStringToObj(
+                            bgStyle?.replace(/\d*deg/g, `${gradientDegree}deg`)
+                          )}
+                          key={idx}
+                          onClick={() =>
+                            setBg({
+                              style: bgStyle?.replace(
+                                /\d*deg/g,
+                                `${gradientDegree}deg`
+                              ),
+                              type: 'gradient',
+                            })
+                          }
+                        />
+                      ))}
+                  </div>
                 </div>
                 <div>
                   <p className='mt-4'>Direction</p>
