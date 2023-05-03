@@ -334,7 +334,15 @@ export function Menu() {
               <CardHeader>
                 <CardTitle>Custom</CardTitle>
                 <CardDescription>
-                  Use gradient generator and copy CSS
+                  Use{' '}
+                  <a
+                    href='https://hypercolor.dev/generator'
+                    target='_blank'
+                    className='underline'
+                  >
+                    gradient generator
+                  </a>{' '}
+                  and copy-paste CSS
                 </CardDescription>
               </CardHeader>
               <CardContent>
