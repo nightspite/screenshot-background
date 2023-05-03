@@ -6,7 +6,7 @@ export const siteConfig = {
     "Make your screenshots pop with a background image.",
   links: {
     twitter: "https://twitter.com/nightspite3",
-    github: "https://github.com/nightspite",
+    github: "https://github.com/nightspite/screenshot-background",
   },
   credits: {
     shadcnTwitter: "https://twitter.com/shadcn",
