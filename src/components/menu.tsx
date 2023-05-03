@@ -99,6 +99,10 @@ export function Menu() {
                   originalNodeWidth / originalNodeHeight;
 
                 const nodeCopy = node.cloneNode(true) as HTMLElement;
+                nodeCopy.style.display = 'flex';
+                nodeCopy.style.alignItems = 'center';
+                nodeCopy.style.justifyContent = 'center';
+                nodeCopy.style.padding = '0';
 
                 // console.log(size.width, size.height, size.ratio);
                 // console.log(
