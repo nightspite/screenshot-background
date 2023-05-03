@@ -19,20 +19,14 @@ export const metadata: Metadata = {
     template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: [
-    'Next.js',
-    'React',
-    'Tailwind CSS',
-    'Server Components',
-    'Radix UI',
-  ],
+  keywords: ['background', 'screenshot', 'background-screenshot'],
   authors: [
     {
-      name: 'shadcn',
-      url: 'https://shadcn.com',
+      name: 'nightspite',
+      url: 'https://https://nightspite.vercel.app/',
     },
   ],
-  creator: 'shadcn',
+  creator: 'nightspite',
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: 'white' },
     { media: '(prefers-color-scheme: dark)', color: 'black' },
@@ -58,7 +52,7 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: '@shadcn',
+    creator: '@nightspite3',
   },
   icons: {
     icon: '/favicon.ico',
