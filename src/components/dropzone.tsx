@@ -92,11 +92,7 @@ export function Dropzone() {
   }, [file, isDragActive, radius, fileImageSize?.ratio, aspect, boxShadow]);
 
   return (
-    <div
-      {...getRootProps()}
-      // className='flex flex-col justify-center items-center cursor-pointer w-full h-full'
-      className='relative w-full h-full'
-    >
+    <div {...getRootProps()} className='relative w-full h-full'>
       <input {...getInputProps()} />
       {preview}
     </div>
