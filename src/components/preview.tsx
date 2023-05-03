@@ -1,3 +1,5 @@
+'use client';
+
 import { Dropzone } from '@/components/dropzone';
 import { useAtom } from 'jotai';
 import { aspectAtom, bgAtom, paddingAtom } from '@/components/menu';

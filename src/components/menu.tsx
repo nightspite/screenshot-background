@@ -1,3 +1,5 @@
+'use client';
+
 import { atom, useAtom } from 'jotai';
 import { BackgroundPreview } from '@/components/background-preview';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';

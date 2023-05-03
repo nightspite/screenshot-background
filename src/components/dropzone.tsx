@@ -1,3 +1,5 @@
+'use client';
+
 import { useMemo, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { Icons } from '@/components/icons';
