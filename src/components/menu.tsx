@@ -109,8 +109,8 @@ export function Menu() {
                   height: size.height + padding * 2,
                 };
 
-          const png = await domtoimage.toPng(nodeCopy, options);
           if (type === 'download') {
+            const png = await domtoimage.toPng(nodeCopy, options);
             if (png) {
               const a = document.createElement('a');
               a.href = png;
@@ -118,9 +118,12 @@ export function Menu() {
               a.click();
             }
           } else {
-            copyToClipboard(png, {
-              format: 'image/png',
-            });
+            const blob = await domtoimage.toBlob(nodeCopy, options);
+            await navigator.clipboard.write([
+              new ClipboardItem({
+                'image/png': blob,
+              }),
+            ]);
           }
         }
       }
