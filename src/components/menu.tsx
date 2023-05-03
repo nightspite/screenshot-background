@@ -23,7 +23,7 @@ import {
   parseAspectRatio,
 } from '@/lib/utils';
 import { Textarea } from '@/components/ui/textarea';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import colors from 'tailwindcss/colors';
 
 import { Icons } from '@/components/icons';
@@ -73,9 +73,64 @@ export function Menu() {
 
   const [textAreaValue, setTextAreaValue] = useState('background-image: ');
 
+  const getGeneratedImage = useCallback(
+    async (type: 'download' | 'copy') => {
+      const node = document.querySelector('#preview') as HTMLElement;
+      if (node) {
+        if (file) {
+          const url = window.URL.createObjectURL(file);
+          const size = await getOriginalImageSize(url);
+
+          const originalNodeWidth = node.clientWidth;
+          const originalNodeHeight = node.clientHeight;
+          const originalAspectRatio = originalNodeWidth / originalNodeHeight;
+
+          const nodeCopy = node.cloneNode(true) as HTMLElement;
+          nodeCopy.style.display = 'flex';
+          nodeCopy.style.alignItems = 'center';
+          nodeCopy.style.justifyContent = 'center';
+          nodeCopy.style.padding = '0';
+
+          // console.log(size.width, size.height, size.ratio);
+          // console.log(
+          //   originalNodeWidth,
+          //   originalNodeHeight,
+          //   originalAspectRatio
+          // );
+
+          const options =
+            size.ratio >= originalAspectRatio
+              ? {
+                  width: size.width + padding * 2,
+                  height: size.width / originalAspectRatio + padding * 2,
+                }
+              : {
+                  width: size.height * originalAspectRatio + padding * 2,
+                  height: size.height + padding * 2,
+                };
+
+          const png = await domtoimage.toPng(nodeCopy, options);
+          if (type === 'download') {
+            if (png) {
+              const a = document.createElement('a');
+              a.href = png;
+              a.download = 'image.png';
+              a.click();
+            }
+          } else {
+            copyToClipboard(png, {
+              format: 'image/png',
+            });
+          }
+        }
+      }
+    },
+    [file, padding]
+  );
+
   return (
     <div className='lg:w-[420px] flex-shrink-0 flex flex-col gap-4'>
-      <div className='grid grid-cols-2 gap-4'>
+      <div className='grid grid-cols-3 gap-4'>
         <Button
           variant='outline'
           disabled={!file}
@@ -83,56 +138,10 @@ export function Menu() {
         >
           Reset
         </Button>
-
-        <Button
-          disabled={!file}
-          onClick={async () => {
-            const node = document.querySelector('#preview') as HTMLElement;
-            if (node) {
-              if (file) {
-                const url = window.URL.createObjectURL(file);
-                const size = await getOriginalImageSize(url);
-
-                const originalNodeWidth = node.clientWidth;
-                const originalNodeHeight = node.clientHeight;
-                const originalAspectRatio =
-                  originalNodeWidth / originalNodeHeight;
-
-                const nodeCopy = node.cloneNode(true) as HTMLElement;
-                nodeCopy.style.display = 'flex';
-                nodeCopy.style.alignItems = 'center';
-                nodeCopy.style.justifyContent = 'center';
-                nodeCopy.style.padding = '0';
-
-                // console.log(size.width, size.height, size.ratio);
-                // console.log(
-                //   originalNodeWidth,
-                //   originalNodeHeight,
-                //   originalAspectRatio
-                // );
-
-                const png = await domtoimage.toPng(
-                  nodeCopy,
-                  size.ratio >= originalAspectRatio
-                    ? {
-                        width: size.width + padding * 2,
-                        height: size.width / originalAspectRatio + padding * 2,
-                      }
-                    : {
-                        width: size.height * originalAspectRatio + padding * 2,
-                        height: size.height + padding * 2,
-                      }
-                );
-                if (png) {
-                  const a = document.createElement('a');
-                  a.href = png;
-                  a.download = 'image.png';
-                  a.click();
-                }
-              }
-            }
-          }}
-        >
+        <Button disabled={!file} onClick={() => getGeneratedImage('copy')}>
+          Copy
+        </Button>
+        <Button disabled={!file} onClick={() => getGeneratedImage('download')}>
           Download
         </Button>
       </div>
