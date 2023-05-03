@@ -8,7 +8,21 @@ After using [Cleanshot X](https://cleanshot.com/) for a while, the simple screen
 
 ## Features
 
-- [x] ...
+- [x] gradient background
+- [x] gradient direction
+- [x] mesh background
+- [x] solid color background (tailwind pallete)
+- [x] custom css
+- [x] border radius
+- [x] padding
+- [x] box shadow
+- [x] aspect ratio
+- [ ] save favorites?
+- [ ] custom bg image
+- [ ] bg image position
+- [ ] bg blur
+- [ ] bg opacity
+- [ ] screenshot alignment
 
 ## Development
 
@@ -22,14 +36,6 @@ yarn dev
 # Build the app
 yarn build
 ```
-
-## Todo
-
-- [ ] custom bg image
-- [ ] bg image position
-- [ ] bg blur
-- [ ] bg opacity
-- [ ] screenshot alignment
 
 ## Credits
 
