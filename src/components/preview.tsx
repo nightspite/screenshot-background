@@ -15,7 +15,7 @@ export function Preview() {
   return (
     <div
       className={cn(
-        `relative rounded-sm w-full h-full transition-all`,
+        `flex relative rounded-sm w-full h-full transition-all`,
         aspect === '1/1' && 'aspect-square',
         aspect === '4/3' && 'aspect-[4/3]',
         aspect === '16/9' && 'aspect-video'

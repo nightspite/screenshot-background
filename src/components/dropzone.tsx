@@ -92,7 +92,7 @@ export function Dropzone() {
   }, [file, isDragActive, radius, fileImageSize?.ratio, aspect, boxShadow]);
 
   return (
-    <div {...getRootProps()} className='relative w-full h-full'>
+    <div {...getRootProps()} className='relative w-full h-auto'>
       <input {...getInputProps()} />
       {preview}
     </div>
