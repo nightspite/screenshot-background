@@ -91,22 +91,24 @@ export function Menu() {
           nodeCopy.style.justifyContent = 'center';
           nodeCopy.style.padding = '0';
 
-          // console.log(size.width, size.height, size.ratio);
-          // console.log(
-          //   originalNodeWidth,
-          //   originalNodeHeight,
-          //   originalAspectRatio
-          // );
+          const paddingRatio =
+            (padding * 2) / (originalNodeWidth - padding * 2);
+          const paddingRatioHeight =
+            (padding * 2) / (originalNodeHeight - padding * 2);
 
           const options =
             size.ratio >= originalAspectRatio
               ? {
-                  width: size.width + padding * 2,
-                  height: size.width / originalAspectRatio + padding * 2,
+                  width: size.width * (1 + paddingRatio),
+                  height:
+                    (size.width / originalAspectRatio) * (1 + paddingRatio),
                 }
               : {
-                  width: size.height * originalAspectRatio + padding * 2,
-                  height: size.height + padding * 2,
+                  width:
+                    size.height *
+                    originalAspectRatio *
+                    (1 + paddingRatioHeight),
+                  height: size.height * (1 + paddingRatioHeight),
                 };
 
           if (type === 'download') {
