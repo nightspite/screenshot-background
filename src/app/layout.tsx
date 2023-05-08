@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   authors: [
     {
       name: 'nightspite',
-      url: 'https://https://nightspite.vercel.app/',
+      url: 'https://www.nightspite.me/',
     },
   ],
   creator: 'nightspite',
