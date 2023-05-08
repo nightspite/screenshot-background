@@ -110,6 +110,15 @@ export function Menu() {
                 };
 
           if (type === 'download') {
+            if (
+              navigator.userAgent.indexOf('Safari') !== -1 &&
+              navigator.userAgent.indexOf('Chrome') === -1
+            ) {
+              return alert(
+                'Safari does not support this feature. Please use Chromium based browser.'
+              );
+            }
+
             const png = await domtoimage.toPng(nodeCopy, options);
             if (png) {
               const a = document.createElement('a');
@@ -118,6 +127,19 @@ export function Menu() {
               a.click();
             }
           } else {
+            if (
+              navigator.userAgent.indexOf('Safari') !== -1 &&
+              navigator.userAgent.indexOf('Chrome') === -1
+            ) {
+              return alert(
+                'Safari does not support this feature. Please use Chromium based browser.'
+              );
+            } else if (navigator.userAgent.indexOf('Firefox') !== -1) {
+              return alert(
+                'Firefox does not support this feature. Please use Chromium based browser.'
+              );
+            }
+
             const blob = await domtoimage.toBlob(nodeCopy, options);
             await navigator.clipboard.write([
               new ClipboardItem({
