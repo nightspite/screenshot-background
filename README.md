@@ -27,9 +27,9 @@ After using [Cleanshot X](https://cleanshot.com/) for a while, the simple screen
 
 ## Known issues
 
-- [] generating correct image from dom doesn't work on safari [link](https://github.com/tsayen/dom-to-image#browsers)
-- [] copy to clipboard won't work on safari [link](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard)
-- [] copy to clipboard won't work on firefox [link](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard)
+- [ ] generating correct image from dom doesn't work on safari [link](https://github.com/tsayen/dom-to-image#browsers)
+- [ ] copy to clipboard won't work on safari [link](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard)
+- [ ] copy to clipboard won't work on firefox [link](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard)
 
 ## Development
 
